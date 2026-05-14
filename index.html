@@ -179,7 +179,7 @@ background:rgba(255,255,255,.12);
 backdrop-filter:blur(10px);
 overflow-y:auto;
 text-align:left;
-line-height:2.2;
+line-height:1.1;
 font-size:1.15rem;
 white-space:pre-wrap;
 box-shadow:
@@ -394,7 +394,7 @@ padding:20px;
 #typing{
     min-height:260px;
     font-size:.85rem;
-    line-height:1.7;
+    line-height:1.1;
     padding:15px;
 }
 
@@ -598,6 +598,34 @@ font-size:1.1rem;
         scale(1);
 }
 
+.tapHint{
+    margin-top:20px;
+
+    padding:12px 25px;
+
+    background:rgba(255,255,255,.15);
+
+    border-radius:30px;
+
+    backdrop-filter:blur(10px);
+
+    font-size:.95rem;
+
+    opacity:0;
+
+    transform:translateY(20px);
+
+    transition:1s;
+
+    box-shadow:
+        0 0 20px rgba(255,255,255,.15);
+}
+
+.tapHint.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
 .finalEnding{
     text-align:center;
 }
@@ -635,23 +663,6 @@ font-size:1.1rem;
     transition:1s;
 }
 
-.startBtn{
-    margin-top:30px;
-
-    opacity:0;
-    pointer-events:none;
-
-    transform:translateY(20px);
-
-    transition:.5s ease;
-}
-
-.startBtn.show{
-    opacity:1;
-    pointer-events:auto;
-
-    transform:translateY(0);
-}
 
 .loaderHeart{
     font-size:70px;
@@ -716,13 +727,15 @@ scroll-behavior:smooth;
 
 <div id="loadingScreen">
 
-    <div class="loaderHeart">❤️</div>
+    <div class="loaderHeart" onclick="startSurprise()">
+        ❤️
+    </div>
 
     <h2>Tunggu BUBBB...</h2>
 
-    <button class="btn startBtn" id="startBtn">
-        ehh pencet dulu🤭
-    </button>
+    <div class="tapHint" id="tapHint">
+    klik aja love nya sayangg🥰
+    </div>
 
 </div>
 
@@ -867,37 +880,96 @@ scroll-behavior:smooth;
 
 window.addEventListener("load",()=>{
 
-    const startBtn = document.getElementById("startBtn");
-    const loading = document.getElementById("loadingScreen");
-    const music = document.getElementById("bgMusic");
-
-    // tombol muncul setelah 2 detik
     setTimeout(()=>{
 
-        startBtn.classList.add("show");
+        document
+        .getElementById("tapHint")
+        .classList.add("show");
 
-    },5000);
-
-    // klik tombol
-    startBtn.addEventListener("click",()=>{
-
-        music.play();
-
-        loading.style.opacity="0";
-
-        setTimeout(()=>{
-
-            loading.style.display="none";
-
-        },1000);
-
-    });
+    },4000);
 
 });
+
 
 function nextPage(a,b){
 document.getElementById("page"+a).classList.add("hidden");
 document.getElementById("page"+b).classList.remove("hidden");
+}
+
+function startSurprise(){
+
+    // play musik
+    document
+    .getElementById("bgMusic")
+    .play();
+
+    // ambil posisi love
+    const love =
+    document.querySelector(".loaderHeart");
+
+    const rect =
+    love.getBoundingClientRect();
+
+    const centerX =
+    rect.left + rect.width / 2;
+
+    const centerY =
+    rect.top + rect.height / 2;
+
+    // ledakan romantis
+    for(let i=0;i<45;i++){
+
+        const burst =
+        document.createElement("div");
+
+        burst.className = "burst";
+
+        burst.innerHTML =
+        ["❤️","💖","✨","🎉","💞"]
+        [Math.floor(Math.random()*5)];
+
+        // mulai dari posisi LOVE
+        burst.style.left = centerX + "px";
+        burst.style.top = centerY + "px";
+
+        // arah random
+        burst.style.setProperty(
+            "--x",
+            (Math.random()*700-350)+"px"
+        );
+
+        burst.style.setProperty(
+            "--y",
+            (Math.random()*700-350)+"px"
+        );
+
+        document.body.appendChild(burst);
+
+        setTimeout(()=>{
+            burst.remove();
+        },1500);
+    }
+
+    // animasi love membesar
+    love.style.transform = "scale(1.8)";
+    love.style.opacity = "0";
+
+    // loading hilang
+    setTimeout(()=>{
+
+        document
+        .getElementById("loadingScreen")
+        .style.opacity="0";
+
+        setTimeout(()=>{
+
+            document
+            .getElementById("loadingScreen")
+            .style.display="none";
+
+        },1000);
+
+    },700);
 }
 
 function createHeart(){
@@ -969,27 +1041,26 @@ function moveButton(){
     runBtn.style.top = y + "px";
 }
 
-runBtn.addEventListener("click",()=>nextPage(2,3));
-
 function showMessage(){
 nextPage(4,5);
 
-const text=`Untuk kamu yang paling aku sayang ❤️
+const text=`Selamat ulang tahun untukmu, cintaku sayangku bububku mwahh...
+10 Oktober akan selalu jadi tanggal favoritku, karena di hari itu semesta menghadirkan seseorang yang begitu berarti dalam hidupku.
 
-Selamat ulang tahun yaa cintaku...
+Terima kasih sudah hadir dan membuat hariku terasa lebih hidup.
+Kamu adalah alasan di balik senyum kecilku, tempat pulang paling tenang setelah dunia terasa melelahkan.
 
-Terima kasih karena sudah hadir
-dan menjadi bagian terindah
-di hidup aku.
+Semoga di usia yang baru ini,
+setiap langkahmu dipenuhi kebahagiaan,
+setiap doamu dipermudah Tuhan,
+dan setiap harimu selalu ditemani cinta yang tulus.
 
-Semoga semua langkahmu
-dipenuhi bahagia,
-kesehatan,
-dan cinta yang gak pernah habis ✨
+Aku mungkin tidak sempurna,
+tapi aku akan selalu berusaha menjadi seseorang yang ada untukmu, hari ini, besok, dan selama yang kita mampu.
 
-Dan semoga...
-kita terus bersama
-sampai kapanpun ❤️
+Selamat ulang tahun, sayangku.
+10 Oktober bukan hanya tentang bertambahnya usia, tapi tentang betapa bersyukurnya aku karena kamu lahir ke dunia ini. ❤️
+
 
 I love you more than words can explain.`;
 
