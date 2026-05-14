@@ -371,7 +371,9 @@ padding:20px;
 }
 
 .birthdayContent{
-    grid-template-columns:1fr;
+    grid-template-columns:70px 1fr 70px;
+    gap:10px;
+    align-items:start;
 }
 
 .sidePhoto:first-child{
@@ -382,12 +384,18 @@ padding:20px;
     order:1;
 }
 .polaroid{
-    max-width:180px;
-    margin:auto;
+    width:70px;
+    padding:5px 5px 15px;
+}
+.polaroid span{
+    font-size:8px;
 }
 
 #typing{
-    min-height:300px;
+    min-height:260px;
+    font-size:.85rem;
+    line-height:1.7;
+    padding:15px;
 }
 
 }
@@ -924,35 +932,44 @@ s.style.top=Math.random()*100+"vh";
 document.body.appendChild(s);
 }
 
-const runBtn=document.getElementById("runBtn");
-let moveCount=0;
+const runBtn = document.getElementById("runBtn");
+
+let clickCount = 0;
+
+runBtn.addEventListener("click", () => {
+
+    clickCount++;
+
+    // kalau sudah 6x baru lanjut
+    if(clickCount >= 8){
+
+        nextPage(2,3);
+        return;
+    }
+
+    moveButton();
+});
 
 function moveButton(){
 
-if(moveCount>=8)return;
+    const box = document.querySelector("#page2 .box");
+    const rect = box.getBoundingClientRect();
 
-moveCount++;
+    const btnWidth = runBtn.offsetWidth;
+    const btnHeight = runBtn.offsetHeight;
 
-const box=document.querySelector("#page2 .box");
-const rect=box.getBoundingClientRect();
+    const maxX = rect.width - btnWidth - 20;
+    const maxY = rect.height - btnHeight - 20;
 
-const btnWidth=runBtn.offsetWidth;
-const btnHeight=runBtn.offsetHeight;
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
 
-const maxX=rect.width-btnWidth-40;
-const maxY=rect.height-btnHeight-40;
-
-const x=Math.random()*maxX;
-const y=Math.random()*maxY;
-
-runBtn.style.position="absolute";
-runBtn.style.left=x+"px";
-runBtn.style.top=y+"px";
+    runBtn.style.position = "absolute";
+    runBtn.style.left = x + "px";
+    runBtn.style.top = y + "px";
 }
 
 runBtn.addEventListener("click",()=>nextPage(2,3));
-runBtn.addEventListener("mouseover",moveButton);
-runBtn.addEventListener("touchstart",moveButton);
 
 function showMessage(){
 nextPage(4,5);
