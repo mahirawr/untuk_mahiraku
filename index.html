@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Happy Birthday Sayang ❤️</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+overflow:hidden;
+background:
+radial-gradient(circle at top left,#ff4d6d,#ff8fab),
+radial-gradient(circle at bottom right,#ffc2d1,#ffe5ec);
+height:100vh;
+color:white;
+}
+
+.page{
+position:absolute;
+width:100%;
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+transition:1s;
+}
+
+.hidden{
+opacity:0;
+pointer-events:none;
+transform:scale(.9);
+}
+
+h1{
+    font-family:'Dancing Script', cursive;
+    font-size:3.2rem;
+    margin-bottom:25px;
+    margin-top:10px;
+    line-height:1.3;
+    letter-spacing:2px;
+
+    color:white;
+
+    text-shadow:
+        0 0 10px rgba(255,255,255,0.5),
+        0 0 20px rgba(255,182,193,0.4);
+}
+
+.box{
+position:relative;
+width:90%;
+max-width:750px;
+padding:40px;
+background:rgba(255,255,255,.18);
+backdrop-filter:blur(15px);
+border:1px solid rgba(255,255,255,.35);
+border-radius:35px;
+box-shadow:0 8px 32px rgba(255,77,109,.35);
+overflow:hidden;
+text-align:center;
+}
+
+.btn{
+margin-top:25px;
+padding:15px 35px;
+border:none;
+border-radius:50px;
+background:white;
+color:#ff4d6d;
+cursor:pointer;
+font-weight:bold;
+font-size:1rem;
+transition:.3s;
+position:relative;
+z-index:999;
+}
+
+.btn:hover{
+transform:scale(1.1);
+}
+
+#typing{
+height:300px;
+overflow-y:auto;
+white-space:pre-wrap;
+text-align:left;
+line-height:2;
+font-size:1.15rem;
+padding-right:10px;
+}
+
+.cursor{
+display:inline-block;
+width:3px;
+background:white;
+animation:blink .7s infinite;
+}
+
+@keyframes blink{
+50%{opacity:0;}
+}
+
+.heart,.loveRain{
+position:absolute;
+color:white;
+opacity:.7;
+}
+
+.heart{
+animation:float 5s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh) scale(0);}
+100%{transform:translateY(-10vh) scale(1.5);}
+}
+
+.loveRain{
+top:-20px;
+animation:loveFall linear forwards;
+}
+
+@keyframes loveFall{
+to{
+transform:translateY(110vh);
+opacity:0;
+}
+}
+
+.star{
+position:absolute;
+width:2px;
+height:2px;
+background:white;
+border-radius:50%;
+animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+from{opacity:.2;}
+to{opacity:1;transform:scale(2);}
+}
+
+.gallery{
+display:flex;
+gap:20px;
+justify-content:center;
+margin-top:25px;
+flex-wrap:wrap;
+}
+
+/* PAGE 5 */
+.birthdayBox{
+    width:95%;
+    max-width:1200px;
+
+    height:85vh;
+
+    display:flex;
+    flex-direction:column;
+
+    padding:35px;
+}
+
+/* layout isi */
+.contentWrap{
+    flex:1;
+
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+
+    gap:30px;
+
+    overflow:hidden;
+}
+
+
+/* text area */
+#typing{
+    height:100%;
+
+    overflow-y:auto;
+
+    padding:20px;
+
+    border-radius:25px;
+
+    background:rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(10px);
+
+    box-shadow:
+        inset 0 0 15px rgba(255,255,255,0.08);
+
+    font-size:1.15rem;
+
+    line-height:2.1;
+
+    text-align:left;
+}
+
+
+/* gallery */
+.gallery{
+    display:flex;
+    flex-direction:column;
+
+    gap:20px;
+
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
+}
+
+
+/* foto */
+.photo{
+    width:100%;
+    max-width:320px;
+
+    height:240px;
+
+    object-fit:cover;
+
+    border-radius:25px;
+
+    border:3px solid rgba(255,255,255,0.35);
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.25),
+        0 0 25px rgba(255,255,255,0.15);
+
+    transition:.4s;
+
+    opacity:0;
+
+    transform:translateY(30px);
+
+    animation:photoShow 2s forwards;
+}
+
+.photo:hover{
+    transform:scale(1.03);
+}
+
+
+/* scrollbar aesthetic */
+#typing::-webkit-scrollbar{
+    width:6px;
+}
+
+#typing::-webkit-scrollbar-thumb{
+    background:rgba(255,255,255,0.35);
+    border-radius:20px;
+}
+
+
+/* RESPONSIVE HP */
+@media(max-width:900px){
+
+    .contentWrap{
+        grid-template-columns:1fr;
+        overflow-y:auto;
+    }
+
+    .gallery{
+        flex-direction:row;
+        flex-wrap:wrap;
+    }
+
+    .photo{
+        height:200px;
+    }
+
+    h1{
+        font-size:2.5rem;
+    }
+}
+
+@keyframes photoShow{
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.countdownBox{
+position:fixed;
+top:20px;
+right:20px;
+background:rgba(255,255,255,.18);
+padding:15px;
+border-radius:20px;
+backdrop-filter:blur(10px);
+z-index:999;
+}
+
+.finalText{
+line-height:2;
+font-size:1.1rem;
+}
+
+#page5{
+    padding-top:80px;
+}
+
+#page5 .box{
+    max-height:85vh;
+    overflow-y:auto;
+}
+
+.choiceButtons{
+    margin-top:35px;
+
+    display:flex;
+    gap:20px;
+
+    justify-content:center;
+    align-items:center;
+
+    position:relative;
+}
+
+.noBtn{
+    background:#ffe5ec;
+    color:#ff4d6d;
+}
+
+.finalEnding{
+    font-size:1.3rem;
+    line-height:2;
+}
+
+/* CONTAINER */
+.giftContainer{
+    position:relative;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+}
+
+
+/* KADO */
+.giftBox{
+    font-size:120px;
+
+    cursor:pointer;
+
+    animation:
+        floatGift 2s ease-in-out infinite;
+
+    transition:.5s;
+}
+
+
+/* animasi melayang */
+@keyframes floatGift{
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-15px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+
+/* SURAT CINTA */
+.loveLetter{
+
+    opacity:0;
+
+    transform:
+        translateY(100px)
+        scale(.8);
+
+    transition:1.2s ease;
+
+    margin-top:20px;
+
+    width:90%;
+    max-width:700px;
+}
+
+
+/* saat aktif */
+.loveLetter.show{
+
+    opacity:1;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* efek glow */
+.loveLetter .box,
+.loveLetter{
+    animation:letterGlow 2s infinite alternate;
+}
+
+@keyframes letterGlow{
+    from{
+        filter:drop-shadow(0 0 10px rgba(255,255,255,.2));
+    }
+
+    to{
+        filter:drop-shadow(0 0 25px rgba(255,255,255,.5));
+    }
+}
+</style>
+</head>
+<body>
+
+<audio id="bgMusic" autoplay loop>
+<source src="musicc.mp3" type="audio/mp3">
+</audio>
+
+<div class="countdownBox">
+<h3>⏳ Bersama Selama</h3>
+<div id="countdown"></div>
+</div>
+
+<div class="page" id="page1">
+<div class="box">
+<h1>Hai Sayang ❤️</h1>
+<p>Aku punya sesuatu buat kamu...</p>
+<button class="btn" onclick="nextPage(1,2)">Klik Aku</button>
+</div>
+</div>
+
+<div class="page hidden" id="page2">
+<div class="box">
+<h1>Tunggu Dulu 😆</h1>
+<p>Yakin mau lanjut?</p>
+<button class="btn" id="runBtn">Klik Lagi</button>
+</div>
+</div>
+
+<div class="page hidden" id="page3">
+<div class="box">
+<h1>Eh Salah 😭</h1>
+<p>Harus balik dulu hehe</p>
+<button class="btn" onclick="nextPage(3,4)">Back</button>
+</div>
+</div>
+
+<div class="page hidden" id="page4">
+<div class="box">
+<h1>Oke Boleh ❤️</h1>
+<p>Klik terakhir yaa...</p>
+<button class="btn" onclick="showMessage()">Klik</button>
+</div>
+</div>
+
+<div class="page hidden" id="page5">
+
+    <div class="box birthdayBox">
+
+        <h1>Happy Birthday Sayang 🎂❤️</h1>
+
+        <div class="contentWrap">
+
+            <div id="typing"></div>
+
+            <div class="gallery">
+                <img src="fotom.JPG" class="photo">
+                <img src="fotom1.jpeg" class="photo">
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="page hidden" id="page6">
+
+    <div class="box finalBox">
+
+        <h1>Will You Stay With Me Forever? 💍</h1>
+
+        <p class="finalText">
+            Aku akan terus memilih kamu,
+            hari ini,
+            besok,
+            dan seterusnya ❤️
+        </p>
+
+        <div class="choiceButtons">
+
+            <button class="btn yesBtn" onclick="showFinalLove()">
+                YES ❤️
+            </button>
+
+            <button class="btn noBtn" id="noBtn">
+                NO 😭
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="page hidden" id="page7">
+
+    <div class="giftContainer">
+
+        <div class="giftBox" onclick="openGift()">
+            🎁
+        </div>
+
+        <div class="loveLetter" id="loveLetter">
+
+            <h1>YAYYY ❤️</h1>
+
+            <p class="finalEnding">
+                Sekarang kamu resmi jadi
+                pasangan paling lucu,
+                paling manis,
+                dan paling aku sayang 💖
+
+                <br><br>
+
+                Makasih yaa udah bertahan sejauh ini 🥺
+
+                <br><br>
+
+                I LOVE YOU FOREVER ❤️
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+document.addEventListener("click",()=>{
+document.getElementById("bgMusic").play();
+});
+
+function nextPage(a,b){
+document.getElementById("page"+a).classList.add("hidden");
+document.getElementById("page"+b).classList.remove("hidden");
+}
+
+function createHeart(){
+const h=document.createElement("div");
+h.className="heart";
+h.innerHTML="❤";
+h.style.left=Math.random()*100+"vw";
+h.style.fontSize=Math.random()*25+15+"px";
+h.style.animationDuration=Math.random()*3+3+"s";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),6000);
+}
+setInterval(createHeart,300);
+
+function createLoveRain(){
+const h=document.createElement("div");
+h.className="loveRain";
+h.innerHTML="❤";
+h.style.left=Math.random()*100+"vw";
+h.style.fontSize=Math.random()*25+15+"px";
+h.style.animationDuration=Math.random()*3+3+"s";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),6000);
+}
+setInterval(createLoveRain,250);
+
+for(let i=0;i<80;i++){
+const s=document.createElement("div");
+s.className="star";
+s.style.left=Math.random()*100+"vw";
+s.style.top=Math.random()*100+"vh";
+document.body.appendChild(s);
+}
+
+const runBtn=document.getElementById("runBtn");
+let moveCount=0;
+
+runBtn.addEventListener("mouseover",()=>{
+if(moveCount>=5)return;
+moveCount++;
+const box=document.querySelector("#page2 .box");
+const rect=box.getBoundingClientRect();
+runBtn.style.position="absolute";
+runBtn.style.left=Math.random()*(rect.width-170)+"px";
+runBtn.style.top=Math.random()*(rect.height-80)+"px";
+});
+
+runBtn.addEventListener("click",()=>nextPage(2,3));
+
+function showMessage(){
+nextPage(4,5);
+
+const text=`Untuk kamu yang paling aku sayang ❤️
+
+Selamat ulang tahun yaa cintaku...
+
+Terima kasih karena sudah hadir
+dan menjadi bagian terindah
+di hidup aku.
+
+Semoga semua langkahmu
+dipenuhi bahagia,
+kesehatan,
+dan cinta yang gak pernah habis ✨
+
+Dan semoga...
+kita terus bersama
+sampai kapanpun ❤️
+
+I love you more than words can explain.`;
+
+let i=0;
+
+function typing(){
+const box=document.getElementById("typing");
+if(i<text.length){
+box.innerHTML+=text.charAt(i);
+box.scrollTop=box.scrollHeight;
+i++;
+setTimeout(typing,45);
+}else{
+box.innerHTML+='<span class="cursor"></span>';
+
+setTimeout(()=>{
+nextPage(5,6);
+},8000);
+}
+}
+typing();
+}
+
+const startDate=new Date("2023-09-09");
+
+/* tombol NO kabur */
+const noBtn = document.getElementById("noBtn");
+
+noBtn.addEventListener("mouseover",()=>{
+
+    const box = document.querySelector("#page6 .finalBox");
+
+    const rect = box.getBoundingClientRect();
+
+    const maxX = rect.width - 200;
+    const maxY = rect.height - 100;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    noBtn.style.position = "absolute";
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+});
+
+
+/* tombol YES */
+function showFinalLove(){
+
+    nextPage(6,7);
+
+}
+
+function openGift(){
+
+    const gift = document.querySelector(".giftBox");
+    const letter = document.getElementById("loveLetter");
+
+    // animasi kado hilang
+    gift.style.transform = "scale(0)";
+    gift.style.opacity = "0";
+
+    // munculkan surat
+    setTimeout(()=>{
+
+        letter.classList.add("show");
+
+    },500);
+
+}
+
+function updateCountdown(){
+const now=new Date();
+const diff=now-startDate;
+const d=Math.floor(diff/(1000*60*60*24));
+const h=Math.floor((diff/(1000*60*60))%24);
+const m=Math.floor((diff/(1000*60))%60);
+document.getElementById("countdown").innerHTML=
+`${d} Hari ${h} Jam ${m} Menit ❤️`;
+}
+setInterval(updateCountdown,1000);
+updateCountdown();
+
+</script>
+
+</body>
+</html>
